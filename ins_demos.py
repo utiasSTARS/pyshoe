@@ -5,12 +5,48 @@ import matplotlib.pyplot as plt
 from ins_tools.INS import INS
 import scipy.io as sio
 
-stair_demo = True
-hallway_demo = True
-vicon_demo = True
-adaptive_demo = True #run our proposed adaptive detector with motion classification
-lstm_demo = True
- #
+vicon_demo = True	#processes a trajectory from our VICON dataset
+stair_demo = True	#processes a trajectory from our stair dataset
+hallway_demo = True	#processes a trajectory from our hallway dataset
+adaptive_demo = True #runs our adaptive zero-velocity detector with motion classification
+lstm_demo = True	#runs our zero-velocity classifier
+
+if vicon_demo:
+    print("Vicon Demo")
+    source_dir = "data/vicon/processed/"
+    folder = "2017-11-27-11-13-10"
+    data = sio.loadmat('{}{}.mat'.format(source_dir, folder))
+    
+    imu = data['imu']
+    ts = data['ts'][0]
+    gt = data['gt']
+    
+    ins = INS(imu, sigma_a = 0.00098, sigma_w = 8.7266463e-5, T=1.0/200) 
+    
+        ###Optimize zero-velocity threshold for given trial
+    #G_opt_shoe, _, zv_opt_shoe = optimize_gamma(ins, gt, thresh=[0.5e7, 10e7], W=5, detector='shoe')
+    #G_opt_ared, _, zv_opt_shoe = optimize_gamma(ins, gt, thresh=[0.1, 2], W=5, detector='ared')
+        ###load the pre-computed optimal thresholds
+    G_opt_shoe = float(data['G_shoe_opt'])
+    G_opt_ared = float(data['G_ared_opt'])
+    
+        ###Estimate trajectory
+    x_shoe = ins.baseline(W=5, G=G_opt_shoe, detector='shoe')
+    x_ared = ins.baseline(W=5, G=G_opt_ared, detector='ared')
+    
+    x_shoe, _ = align_plots(x_shoe,gt) #rotate data
+    x_ared, _ = align_plots(x_ared,gt)
+    
+    visualize.plot_topdown([x_shoe,x_ared, gt])
+    plt.figure()
+    plt.plot(data['zv_shoe_opt'][0])
+    
+            ###Calculate ARMSE between estimate and Vicon
+    shoe_error = compute_error(x_shoe, gt,'2d')
+    ared_error = compute_error(x_ared, gt, '2d')
+    
+    print("ARMSE for ARED: {}".format(ared_error))
+    print("ARMSE for SHOE: {}".format(shoe_error))
 
 if hallway_demo:
     print("Hallway Demo")
@@ -51,44 +87,6 @@ if stair_demo:
     visualize.plot_stairs(ts[0:(trigger_ind[-1]+1)], [ins.x[0:(trigger_ind[-1]+1)]], gt, trigger_ind=list(trigger_ind), title='Stair Climbing Trial (Vertical Plane)')
     print("ARMSE for SHOE: {}".format(shoe_error))
     print("Furthest point error: {}".format(furthest_point_error))
-
-
-if vicon_demo:
-    print("Vicon Demo")
-    source_dir = "data/vicon/processed/"
-    folder = "2017-11-27-11-13-10"
-    data = sio.loadmat('{}{}.mat'.format(source_dir, folder))
-    
-    imu = data['imu']
-    ts = data['ts'][0]
-    gt = data['gt']
-    
-    ins = INS(imu, sigma_a = 0.00098, sigma_w = 8.7266463e-5, T=1.0/200) #microstrain
-    
-        ###Optimize zero-velocity threshold for given trial
-    #G_opt_shoe, _, zv_opt_shoe = optimize_gamma(ins, gt, thresh=[0.5e7, 10e7], W=5, detector='shoe')
-    #G_opt_ared, _, zv_opt_shoe = optimize_gamma(ins, gt, thresh=[0.1, 2], W=5, detector='ared')
-        ###load the pre-computed optimal thresholds
-    G_opt_shoe = float(data['G_shoe_opt'])
-    G_opt_ared = float(data['G_ared_opt'])
-    
-        ###Estimate trajectory
-    x_shoe = ins.baseline(W=5, G=G_opt_shoe, detector='shoe')
-    x_ared = ins.baseline(W=5, G=G_opt_ared, detector='ared')
-    
-    x_shoe, _ = align_plots(x_shoe,gt) #rotate data
-    x_ared, _ = align_plots(x_ared,gt)
-    
-    visualize.plot_topdown([x_shoe,x_ared, gt])
-    plt.figure()
-    plt.plot(data['zv_shoe_opt'][0])
-    
-            ###Calculate ARMSE between estimate and Vicon
-    shoe_error = compute_error(x_shoe, gt,'2d')
-    ared_error = compute_error(x_ared, gt, '2d')
-    
-    print("ARMSE for ARED: {}".format(ared_error))
-    print("ARMSE for SHOE: {}".format(shoe_error))
 
 if adaptive_demo:
     print("Adaptive Detector Demo")

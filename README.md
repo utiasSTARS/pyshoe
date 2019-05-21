@@ -34,16 +34,28 @@ We include a script `ins_demos.py` with five separate demos that provide sample 
 # Reproduction of Paper Results
 We include two scripts that reproduce the two main results tables in our paper:
 
-* `process_error_hallway.py` reproduces table 3 of the paper by iteratively evaluating the error of specified zero-velocity detectors (using any specified list of zero-velocity thresholds) for all trials in the hallway dataset. Two csv files are automatically generated in the results folder: `hallway_results_raw.csv`, which shows the error for all individual trials, and `hallway_results.csv`, which is a processed version that reproduces paper results. The processed results are saved to `results/hallway_results.csv`.  `plot_hallway_data.py` generates plots for all of the hallway trials within `results/figs/hallway/`,
+* `process_error_hallway.py` 
 
-* `process_error_stairs.py`: Reproduces table 4 of the paper by iteratively evaluating the error of the specified zero-velocity detectors (each with a list of threshold values) for all trials in the stair dataset Two csv files are automatically generated in the results folder: `stair_results_raw.csv`, which shows the error for all individual trials, and `stair_results.csv`, which is a processed version that reproduces the paper results. The processed results are saved to `results/stair_results.csv`. `plot_stair_data.py` generates plots for all of the hallway trials within `results/figs/hallway/`.
+Reproduces table 3 of the paper by iteratively evaluating the error of specified zero-velocity detectors (using any specified list of zero-velocity thresholds) for all trials in the hallway dataset. Two csv files are automatically generated in the results folder: `hallway_results_raw.csv`, which shows the error for all individual trials, and `hallway_results.csv`, which is a processed version that reproduces paper results. The processed results are saved to `results/hallway_results.csv`.
+
+* `plot_hallway_data.py` 
+
+Generates plots for all of the hallway trials within `results/figs/hallway/`.
+
+* `process_error_stairs.py`
+
+Reproduces table 4 of the paper by iteratively evaluating the error of the specified zero-velocity detectors (each with a list of threshold values) for all trials in the stair dataset Two csv files are automatically generated in the results folder: `stair_results_raw.csv`, which shows the error for all individual trials, and `stair_results.csv`, which is a processed version that reproduces the paper results. The processed results are saved to `results/stair_results.csv`. 
+
+* `plot_stair_data.py` 
+
+Generates plots for all of the hallway trials within `results/figs/hallway/`.
 
 # Additional Scripts
 * `run_threshold_optimization`: Generates the zero-velocity labels that we used to train our LSTM-based zero-velocity classifier. The zero-velocity thresholds for the five zero-velocity detectors (SHOE, ARED, AMVD, MBGTD, VICON) are optimized for each VICON dataset trial, and the most accurate detector's output is used as the ground truth label for each trial.
 
-* We additionally include a script `process_error_vicon.py` that iteratively evaluates the error of the 5 classical zero-velocity detectors when their optimized zero-velocity outputs are used.  The results are saved in `results/vicon_results_raw.csv`. 
+* `process_error_vicon.py`: Iteratively evaluates the error of the 5 classical zero-velocity detectors when their optimized zero-velocity outputs are used.  The results are saved in `results/vicon_results_raw.csv`. 
 
-* `train_motion_classifier.py` will train a three-class motion classifier (walk vs. run vs. stairs) using a subset of the training data, and will reproduce the accuracy of the classifier for the validation set.
+* `train_motion_classifier.py`: Trains a three-class motion classifier (walk vs. run vs. stairs) using a subset of the training data, and will reproduce the accuracy of the classifier for the validation set.
 
 # Citation
 If you use this code in your research, please cite:
