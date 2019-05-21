@@ -56,5 +56,5 @@ for f in sorted(glob.glob('{}*/*/*/*.mat'.format(source_dir))):
         trial = 'Running Trial'
     if trial_type == 'walk':
         trial = 'Walking Trial'
-#    visualize.plot_topdown(traj_list, trigger_ind = list(trigger_ind[0:ind+1]), gt_method='sparse', title='{} (Top-Down View)'.format(trial), save_dir='results/figs/hallway/{}_{}_{}.eps'.format(trial_type, person, folder), legend=legend)
+    visualize.plot_topdown(traj_list, trigger_ind = list(trigger_ind[0:ind+1]), gt_method='sparse', title='{} (Top-Down View)'.format(trial), save_dir='results/figs/hallway/{}_{}_{}.eps'.format(trial_type, person, folder), legend=legend)
     visualize.plot_vertical(ts[0:(trigger_ind[ind]+1)], traj_list, trigger_ind = list(trigger_ind[0:ind+1]), title='{} (Vertical View)'.format(trial), save_dir='results/figs/hallway/{}_{}_{}_vert.eps'.format(trial_type, person, folder), legend=legend)
