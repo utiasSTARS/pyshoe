@@ -6,9 +6,9 @@ def plot_topdown(traj, trigger_ind=None, gt_method = 'dense', title='', save_dir
     #gt_method is dense for Vicon, and sparse for hallway + stairs
     plt.figure()
     plt.clf()
-    plt.rc('text', usetex=True)
-    plt.rc('font', family='serif')
-    plt.rcParams["font.family"] = "Times New Roman"
+#    plt.rc('text', usetex=True)
+#    plt.rc('font', family='serif')
+#    plt.rcParams["font.family"] = "Times New Roman"
     colour = ['blue', 'green', 'darkorange', 'gold']
     for i in range(len(traj)-1):
         if trigger_ind is not None:
@@ -36,9 +36,9 @@ def plot_topdown(traj, trigger_ind=None, gt_method = 'dense', title='', save_dir
 def plot_vertical(ts, traj, trigger_ind=None, title='', save_dir=None, legend=[], Loc=4, markerind =[]):
     plt.figure()
     plt.clf()
-    plt.rc('text', usetex=True)
-    plt.rc('font', family='serif')
-    plt.rcParams["font.family"] = "Times New Roman"
+#    plt.rc('text', usetex=True)
+#    plt.rc('font', family='serif')
+#    plt.rcParams["font.family"] = "Times New Roman"
     colour = ['blue', 'green', 'darkorange', 'gold']
     for i in range(len(traj)-1):
         if trigger_ind is not None:
@@ -61,9 +61,9 @@ def plot_vertical(ts, traj, trigger_ind=None, title='', save_dir=None, legend=[]
 def plot_stairs(ts, traj, gt, title='', legend=None, trigger_ind=None, save_dir=None):       
     plt.figure()
     plt.clf()
-    plt.rc('text', usetex=True)
-    plt.rc('font', family='serif')
-    plt.rcParams["font.family"] = "Times New Roman"
+#    plt.rc('text', usetex=True)
+#    plt.rc('font', family='serif')
+#    plt.rcParams["font.family"] = "Times New Roman"
     colour = ['blue', 'green', 'darkorange', 'gold']
     for i in range(0, len(traj)):
         if trigger_ind is not None:
