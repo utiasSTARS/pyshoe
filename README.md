@@ -66,11 +66,9 @@ If you use this code in your research, please cite:
   booktitle = {Proceedings of the International Conference on Indoor Positioning and Indoor Navigation {(IPIN'17)}},
   date = {2017-09-18/2017-09-21},
   doi = {10.1109/IPIN.2017.8115947},
-  keywords = {cvconfful},
   month = {Sep. 18--21},
   title = {Improving Foot-Mounted Inertial Navigation Through Real-Time Motion Classification},
   url = {http://arxiv.org/abs/1707.01152},
-  video1 = {https://www.youtube.com/watch?v=Jiqj6j9E8dI},
   year = {2017}
 }
 ```
@@ -80,9 +78,7 @@ If you use this code in your research, please cite:
   author = {Brandon Wagstaff and Jonathan Kelly},
   booktitle = {Proceedings of the International Conference on Indoor Positioning and Indoor Navigation {(IPIN'18)}},
   date = {2018-09-24/2018-09-27},
-  keywords = {cvconfful},
   month = {Sep. 24--27},
-  note = {Best Student Paper Finalist},
   title = {LSTM-Based Zero-Velocity Detection for Robust Inertial Navigation},
   url = {http://arxiv.org/abs/1807.05275},
   year = {2018}
