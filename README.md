@@ -59,7 +59,7 @@ Generates plots for all of the hallway trials within `results/figs/hallway/`.
 
 # Citation
 If you use this code in your research, please cite:
-
+```
 @inproceedings{2017_Wagstaff_Improving,
   address = {Sapporo, Japan},
   author = {Brandon Wagstaff and Valentin Peretroukhin and Jonathan Kelly},
@@ -73,7 +73,8 @@ If you use this code in your research, please cite:
   video1 = {https://www.youtube.com/watch?v=Jiqj6j9E8dI},
   year = {2017}
 }
-
+```
+```
 @inproceedings{2018_Wagstaff_LSTM-Based,
   address = {Nantes, France},
   author = {Brandon Wagstaff and Jonathan Kelly},
@@ -86,4 +87,4 @@ If you use this code in your research, please cite:
   url = {http://arxiv.org/abs/1807.05275},
   year = {2018}
 }
-
+```
