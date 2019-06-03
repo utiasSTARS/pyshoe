@@ -13,7 +13,7 @@ Scikit-Learn and Pytorch do not need to be installed if you do not intend to use
 
 # Datasets
 
-Download the inertial dataset [here](https://drive.google.com/open?id=1eMjS3DCNwnkbHXt9knmGAcLB8CI4G27h) or simply run the following bash script from the source directory to automatically download and extract the dataset:
+Download the inertial dataset (~2.9 GB) [here](https://drive.google.com/open?id=1eMjS3DCNwnkbHXt9knmGAcLB8CI4G27h) or simply run the following bash script from the source directory to automatically download and extract the dataset:
 
 ```
 bash download_data.sh
@@ -60,5 +60,30 @@ Generates plots for all of the hallway trials within `results/figs/hallway/`.
 # Citation
 If you use this code in your research, please cite:
 
-TBA
+@inproceedings{2017_Wagstaff_Improving,
+  address = {Sapporo, Japan},
+  author = {Brandon Wagstaff and Valentin Peretroukhin and Jonathan Kelly},
+  booktitle = {Proceedings of the International Conference on Indoor Positioning and Indoor Navigation {(IPIN'17)}},
+  date = {2017-09-18/2017-09-21},
+  doi = {10.1109/IPIN.2017.8115947},
+  keywords = {cvconfful},
+  month = {Sep. 18--21},
+  title = {Improving Foot-Mounted Inertial Navigation Through Real-Time Motion Classification},
+  url = {http://arxiv.org/abs/1707.01152},
+  video1 = {https://www.youtube.com/watch?v=Jiqj6j9E8dI},
+  year = {2017}
+}
+
+@inproceedings{2018_Wagstaff_LSTM-Based,
+  address = {Nantes, France},
+  author = {Brandon Wagstaff and Jonathan Kelly},
+  booktitle = {Proceedings of the International Conference on Indoor Positioning and Indoor Navigation {(IPIN'18)}},
+  date = {2018-09-24/2018-09-27},
+  keywords = {cvconfful},
+  month = {Sep. 24--27},
+  note = {Best Student Paper Finalist},
+  title = {LSTM-Based Zero-Velocity Detection for Robust Inertial Navigation},
+  url = {http://arxiv.org/abs/1807.05275},
+  year = {2018}
+}
 
