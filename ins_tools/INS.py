@@ -7,7 +7,7 @@ class INS():
         self.config = {
         "sigma_a": sigma_a,
         "sigma_w": sigma_w,
-        "g": 9.8029,#9.658,
+        "g": 9.8029,
         "T": T,
         "dt": dt,
             }

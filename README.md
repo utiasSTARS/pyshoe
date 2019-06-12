@@ -13,7 +13,7 @@ Scikit-Learn and Pytorch do not need to be installed if you do not intend to use
 
 # Datasets
 
-Download the inertial dataset (~2.9 GB) [here](https://drive.google.com/open?id=1eMjS3DCNwnkbHXt9knmGAcLB8CI4G27h) or simply run the following bash script from the source directory to automatically download and extract the dataset:
+Download the inertial dataset (~2.9 GB) by running the following bash script from the source directory to automatically download and extract the dataset:
 
 ```
 bash download_data.sh
