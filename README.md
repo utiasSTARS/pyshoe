@@ -60,16 +60,15 @@ Generates plots for all of the hallway trials within `results/figs/hallway/`.
 # Citation
 If you use this code in your research, please cite:
 ```
-@inproceedings{2017_Wagstaff_Improving,
-  address = {Sapporo, Japan},
-  author = {Brandon Wagstaff and Valentin Peretroukhin and Jonathan Kelly},
-  booktitle = {Proceedings of the International Conference on Indoor Positioning and Indoor Navigation {(IPIN'17)}},
-  date = {2017-09-18/2017-09-21},
-  doi = {10.1109/IPIN.2017.8115947},
-  month = {Sep. 18--21},
-  title = {Improving Foot-Mounted Inertial Navigation Through Real-Time Motion Classification},
-  url = {http://arxiv.org/abs/1707.01152},
-  year = {2017}
+@article{wagstaff2019robust,
+  title={Robust Data-Driven Zero-Velocity Detection for Foot-Mounted Inertial Navigation},
+  author={Wagstaff, Brandon and Peretroukhin, Valentin and Kelly, Jonathan},
+  journal={IEEE Sensors Journal},
+  volume={20},
+  number={2},
+  pages={957--967},
+  year={2019},
+  publisher={IEEE}
 }
 ```
 ```
@@ -84,3 +83,17 @@ If you use this code in your research, please cite:
   year = {2018}
 }
 ```
+```
+@inproceedings{2017_Wagstaff_Improving,
+  address = {Sapporo, Japan},
+  author = {Brandon Wagstaff and Valentin Peretroukhin and Jonathan Kelly},
+  booktitle = {Proceedings of the International Conference on Indoor Positioning and Indoor Navigation {(IPIN'17)}},
+  date = {2017-09-18/2017-09-21},
+  doi = {10.1109/IPIN.2017.8115947},
+  month = {Sep. 18--21},
+  title = {Improving Foot-Mounted Inertial Navigation Through Real-Time Motion Classification},
+  url = {http://arxiv.org/abs/1707.01152},
+  year = {2017}
+}
+```
+

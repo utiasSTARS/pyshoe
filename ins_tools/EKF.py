@@ -32,7 +32,7 @@ class Localizer():
         P_hat = np.zeros((imudata.shape[0],9,9)) #initial covariance matrix P
         P_hat[0,0:3,0:3] = np.power(1e-5,2)*np.identity(3) #position (x,y,z) variance
         P_hat[0,3:6,3:6] = np.power(1e-5,2)*np.identity(3) #velocity (x,y,z) variance
-        P_hat[0,6:9,6:9] = np.power(0.1*np.pi/180,2)*np.identity(3)
+        P_hat[0,6:9,6:9] = np.power(0.1*np.pi/180,2)*np.identity(3) #np.power(0.1*np.pi/180,2)*np.identity(3)
         return x, q, P_hat
           
     def nav_eq(self, xin,imu,qin,dt):

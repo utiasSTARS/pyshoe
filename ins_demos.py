@@ -6,10 +6,10 @@ from ins_tools.INS import INS
 import scipy.io as sio
 
 vicon_demo = True	#processes a trajectory from our VICON dataset
-stair_demo = True	#processes a trajectory from our stair dataset
-hallway_demo = True	#processes a trajectory from our hallway dataset
-adaptive_demo = True #runs our adaptive zero-velocity detector with motion classification
-lstm_demo = True	#runs our zero-velocity classifier
+stair_demo = False	#processes a trajectory from our stair dataset
+hallway_demo = False	#processes a trajectory from our hallway dataset
+adaptive_demo = False #runs our adaptive zero-velocity detector with motion classification
+lstm_demo = False	#runs our zero-velocity classifier
 
 if vicon_demo:
     print("Vicon Demo")

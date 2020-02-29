@@ -44,9 +44,9 @@ for f in sorted(glob.glob('{}*/*/*/*.mat'.format(source_dir))):
             x = stored_trajectories["{}_{}_{}_det_{}_G_{}".format(trial_type,person, folder, det_list[i], thresh_list[i])]
         x, gt = align_plots(x,gt, dist=0.8, use_totstat=True, align_idx=trigger_ind[1]) #rotate data    
         if trial_type == 'run':
-            ind = 3
+            ind = 6#3 for halfway
         else:
-            ind=7
+            ind= 14 #7 for halfway
         traj_list.append(x[0:(trigger_ind[ind]+1)])
 
     traj_list.append(gt)  
@@ -56,5 +56,7 @@ for f in sorted(glob.glob('{}*/*/*/*.mat'.format(source_dir))):
         trial = 'Running Trial'
     if trial_type == 'walk':
         trial = 'Walking Trial'
-    visualize.plot_topdown(traj_list, trigger_ind = list(trigger_ind[0:ind+1]), gt_method='sparse', title='{} (Top-Down View)'.format(trial), save_dir='results/figs/hallway/{}_{}_{}.eps'.format(trial_type, person, folder), legend=legend)
-    visualize.plot_vertical(ts[0:(trigger_ind[ind]+1)], traj_list, trigger_ind = list(trigger_ind[0:ind+1]), title='{} (Vertical View)'.format(trial), save_dir='results/figs/hallway/{}_{}_{}_vert.eps'.format(trial_type, person, folder), legend=legend)
+#    visualize.plot_topdown(traj_list, trigger_ind = list(trigger_ind[0:ind+1]), gt_method='sparse', title='{} (Top-Down View)'.format(trial), save_dir='results/figs/hallway/{}_{}_{}.eps'.format(trial_type, person, folder), legend=legend)
+#    visualize.plot_vertical(ts[0:(trigger_ind[ind]+1)], traj_list, trigger_ind = list(trigger_ind[0:ind+1]), title='{} (Vertical View)'.format(trial), save_dir='results/figs/hallway/{}_{}_{}_vert.eps'.format(trial_type, person, folder), legend=legend)
+    visualize.plot_topdown(traj_list, trigger_ind = list(trigger_ind[0:ind+1]), gt_method='sparse', title=None, save_dir='results/figs/hallway/{}_{}_{}.eps'.format(trial_type, person, folder), legend=legend)
+    visualize.plot_vertical(ts[0:(trigger_ind[ind]+1)], traj_list, trigger_ind = list(trigger_ind[0:ind+1]), title=None, save_dir='results/figs/hallway/{}_{}_{}_vert.eps'.format(trial_type, person, folder), legend=legend)

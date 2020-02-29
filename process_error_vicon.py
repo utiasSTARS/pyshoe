@@ -33,15 +33,16 @@ for f in glob.glob('{}/*.mat'.format(folder)):
     best_detector_count[best_detector]+=1
     
         ###add custom detector and its zv output to lists:
-    det_list = ['shoe', 'ared', 'amvd', 'mbgtd', 'vicon']
+    det_list = ['shoe'] #['shoe', 'ared', 'amvd', 'mbgtd', 'vicon']
     zv_list =  [zv_shoe_opt, zv_ared_opt, zv_amvd_opt, zv_mbgtd_opt, zv_vicon_opt]
 
     ins = INS(imu, sigma_a = 0.00098, sigma_w = 8.7266463e-5, T=1.0/200) #microstrain
 
     ###Estimate trajectory
     for i in range(0, len(det_list)):
-        if load_traj!=True:
+        if load_traj!=False:
             x = ins.baseline(zv=zv_list[i])
+            print(x.shape)
             x, gt = align_plots(x,gt) #rotate data
             saved_trajectories['{}_{}'.format(trial_name, det_list[i])] = x
         else:

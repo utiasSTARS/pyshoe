@@ -45,5 +45,7 @@ for f in glob.glob('{}/*/processed_data.mat'.format(source_dir),recursive=True):
     
     traj_list_topdown = traj_list.copy()
     traj_list_topdown.append(0)
-    visualize.plot_topdown(traj_list_topdown, trigger_ind = None, gt_method='none', title='Stair-Climbing Trial (Top-Down View)', save_dir='results/figs/stairs/{}_topdown.eps'.format(trial_name), legend=topdown_legend)                
-    visualize.plot_stairs(ts[0:(trigger_ind[-1]+1)], traj_list, gt, trigger_ind=list(trigger_ind), title='Stair Climbing Trial (Vertical Plane)', legend=legend, save_dir='results/figs/stairs/{}.eps'.format(trial_name))
+#    visualize.plot_topdown(traj_list_topdown, trigger_ind = None, gt_method='none', title='Stair-Climbing Trial (Top-Down View)', save_dir='results/figs/stairs/{}_topdown.eps'.format(trial_name), legend=topdown_legend)                
+#    visualize.plot_stairs(ts[0:(trigger_ind[-1]+1)], traj_list, gt, trigger_ind=list(trigger_ind), title='Stair Climbing Trial (Vertical Plane)', legend=legend, save_dir='results/figs/stairs/{}.eps'.format(trial_name))
+    visualize.plot_topdown(traj_list_topdown, trigger_ind = None, gt_method='none', title=None, save_dir='results/figs/stairs/{}_topdown.eps'.format(trial_name), legend=topdown_legend)                
+    visualize.plot_stairs(ts[0:(trigger_ind[-1]+1)], traj_list, gt, trigger_ind=list(trigger_ind), title=None, legend=legend, save_dir='results/figs/stairs/{}.eps'.format(trial_name))

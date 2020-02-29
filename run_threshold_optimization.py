@@ -14,6 +14,7 @@ def main():
         data = sio.loadmat('{}/processed_data.mat'.format(folder))
         imu = data['imu']
         gt = data['gt']
+        gt_rpy = data['gt_rpy']
         ts = data['ts']
         
         ins = INS(imu, sigma_a = 0.00098, sigma_w = 8.7266463e-5, T=1.0/200)

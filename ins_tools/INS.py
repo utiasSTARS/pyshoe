@@ -45,7 +45,7 @@ class INS():
     def baseline(self,W=5, G=5e8, detector='shoe', zv=None):
         imudata = self.imudata
         
-        x_check,q, P_check = self.Localizer.init() #initialize state
+        x_check,q, P = self.Localizer.init() #initialize state
         x_hat = x_check 
         self.x = x_hat
         
@@ -66,14 +66,17 @@ class INS():
             
             F,G = self.Localizer.state_update(imudata[k,:],q[k-1,:], dt) 
         
-            P_check[k,:,:] = (F.dot(P_check[k-1,:,:])).dot(F.T) + (G.dot(self.Q)).dot(G.T)
-            P_check[k,:,:] = (P_check[k,:,:] + P_check[k,:,:].T)/2 #make symmetric
+            P[k,:,:] = (F.dot(P[k-1,:,:])).dot(F.T) + (G.dot(self.Q)).dot(G.T)
+            P[k,:,:] = (P[k,:,:] + P[k,:,:].T)/2 #make symmetric
             #corrector
             if self.zv[k] == True: 
-                x_hat[k,:], P_check[k,:,:], q[k,:] = self.Localizer.corrector(x_check[k,:], P_check[k,:,:], Rot )
+                x_hat[k,:], P[k,:,:], q[k,:] = self.Localizer.corrector(x_check[k,:], P[k,:,:], Rot )
             else:
                 x_hat[k,:] = x_check[k,:]
             self.x[k,:] = x_hat[k,:]  
         self.x[:,2] = -self.x[:,2] 
+        self.rot = self.x[:,6:9]
+        self.q = q
+        self.P = P
         return self.x
     

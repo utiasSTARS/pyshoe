@@ -4,6 +4,7 @@ from ins_tools.geometry_helpers import *
 import ins_tools.SVM as SVM
 import copy
 import csv
+from liegroups import SO3
     
 #rotates a (Nx3) trajectory traj1 to align with another (Nx3)trajectory traj2
 def align_plots(traj1,traj2, dist=0.8, use_totstat=False, align_idx=None):
@@ -128,6 +129,61 @@ def optimize_gamma(ins, vic, thresh=[0.5e7, 10e7], W=5, detector='shoe'):
 #            print("new minimum error: {} at gamma={}".format(opt_error, opt_thresh))
     print("minimum ARMSE: {} at gamma={}".format(opt_error, opt_thresh))
     return opt_thresh, opt_error, zv_opt
+
+def angle_wrap(angle,radians=False):
+    '''
+    Wraps the input angle to 360.0 degrees.
+
+    if radians is True: input is assumed to be in radians, output is also in
+    radians
+
+    '''
+
+    if radians:
+        wrapped = angle % (np.pi)
+        if wrapped < 0.0:
+            wrapped = np.pi + wrapped
+        if angle < 0:
+            wrapped = -np.pi + wrapped
+
+    else:
+
+        wrapped = angle % 360.0
+        if wrapped < 0.0:
+            wrapped = 360.0 + wrapped
+
+    return wrapped 
+
+def rotate_attitude_to_gt(est_rpy, gt_rpy):
+    est_rpy[:,2] = gt_rpy[0,2] - (np.unwrap(est_rpy[:,2]) - est_rpy[0,2])
+    for i in range(0,est_rpy.shape[0]):
+        est_rpy[i,2] = angle_wrap(est_rpy[i,2],radians=True)
+    est_rpy[:,0] = gt_rpy[0,0] + (est_rpy[:,0]-est_rpy[0,0])
+    est_rpy[:,1] = gt_rpy[0,1] + (est_rpy[:,1]-est_rpy[0,1])
+    return est_rpy
+
+def compute_attitude_error(est_rpy, gt_rpy):
+    r_gt = gt_rpy[0,:]
+    r_est = est_rpy[0,:]
+    
+    R_gt = SO3.from_rpy(r_gt[0], r_gt[1], r_gt[2])
+    R_est = SO3.from_rpy(r_est[0], r_gt[1], r_gt[2])
+    dR = R_gt.dot(R_est.inv())
+    
+    ang_error = np.zeros(est_rpy.shape)
+    for i in range(0, gt_rpy.shape[0]):
+        R = SO3.from_rpy(est_rpy[i,0], est_rpy[i,1], est_rpy[i,2])
+    #    new_R = dR.dot(R)
+    #    x_shoe[i,0:3] = dR.as_matrix().dot(x_shoe[i,0:3])
+        
+        R_gt = SO3.from_rpy(gt_rpy[i,0], gt_rpy[i,1], gt_rpy[i,2])
+        
+        error = np.eye(3)- (R.dot(R_gt.inv())).as_matrix()
+        ang_error[i,2] = -error[0,1]
+        ang_error[i,1] = error[0,2]
+        ang_error[i,0] = -error[2,1]
+#    rpy_norm_error = np.linalg.norm(ang_error,axis=1)
+    return ang_error 
 
 ###class for recording results for hallway dataset, which formats the csv to exactly reproduce the paper results.
 class HallwayErrorLogger():
