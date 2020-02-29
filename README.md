@@ -62,14 +62,14 @@ This script generates plots for all of the hallway trials within `results/figs/h
 If you use this code in your research, please cite:
 ```
 @article{2019_Wagstaff_Robust,
-  title={Robust Data-Driven Zero-Velocity Detection for Foot-Mounted Inertial Navigation},
-  author={Brandon Wagstaff and Valentin Peretroukhin and Jonathan Kelly},
-  journal={IEEE Sensors Journal},
-  pages={957--967},
-  number={2},
+  title = {Robust Data-Driven Zero-Velocity Detection for Foot-Mounted Inertial Navigation},
+  author = {Brandon Wagstaff and Valentin Peretroukhin and Jonathan Kelly},
+  journal = {IEEE Sensors Journal},
+  pages = {957--967},
+  number = {2},
   url = {https://arxiv.org/abs/1910.00529},
-  volume={20},
-  year={2019}
+  volume = {20},
+  year = {2019}
 }
 ```
 ```
