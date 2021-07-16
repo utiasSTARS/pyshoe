@@ -2,7 +2,7 @@
 
 Code for "Robust Data-Driven Zero-Velocity Detection for Foot-Mounted Inertial Navigation": an open source foot-mounted, zero-velocity-aided inertial navigation system (INS) that includes implementations of four classical zero-velocity detectors, in addition to our two proposed learning-based detectors. We provide three mixed-motion inertial datasets and evaluation code tools for comparison of the various zero-velocity detection methods.
 
-<img src="https://github.com/utiasSTARS/pyshoe/blob/master/main_figure.png" width="400px"/>
+<img src="https://github.com/utiasSTARS/pyshoe/blob/master/data/main_figure.png" width="400px"/>
 
 ## Dependencies:
 * numpy

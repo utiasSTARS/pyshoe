@@ -30,8 +30,9 @@ walk_train, walk_test  = svm.importdata(walk_dirs,crop=300, samples_per_file=sam
 run_train, run_test = svm.importdata(run_dirs,crop=300, samples_per_file=samples_per_file, seq_len=sample_duration)
 stair_train, stair_test = svm.importdata(stair_dirs, crop=300, samples_per_file=samples_per_file, seq_len=sample_duration)
 
+## uncomment to train instead of loading the current one
 #clf = svm.traindata(0.001, walk_train, run_train, stair_train)
-#joblib.dump(clf, 'results/3class_vn100_2.pkl', compress=1)
+#joblib.dump(clf, 'results/3class_vn100_2_new.pkl', compress=1)
 #print("testing accuracy")
 clf = joblib.load('results/3class_vn100_2.pkl')
 

@@ -1,0 +1,1 @@
+Run the download script to populate this directory with all of the CSV and MAT files for the available datasets. See the various readme files in the three subdirectories to properly interpret the data.
