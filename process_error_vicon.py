@@ -40,7 +40,7 @@ for f in glob.glob('{}/*.mat'.format(folder)):
 
     ###Estimate trajectory
     for i in range(0, len(det_list)):
-        if load_traj!=False:
+        if load_traj!=True:
             x = ins.baseline(zv=zv_list[i])
             print(x.shape)
             x, gt = align_plots(x,gt) #rotate data

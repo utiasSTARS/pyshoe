@@ -7,7 +7,7 @@ Code for "Robust Data-Driven Zero-Velocity Detection for Foot-Mounted Inertial N
 ## Dependencies:
 * numpy
 * scipy 
-* [scikit-learn](https://scikit-learn.org/stable/) to run the adaptive zero-velocity detector
+* [scikit-learn](https://scikit-learn.org/stable/) to run the adaptive zero-velocity detector (version 0.19.1)
 * [pytorch](https://pytorch.org/) to run the LSTM-based zero-velocity classifier
 
 Scikit-Learn and PyTorch do not need to be installed if you do not intend to use our zero-velocity detectors.  You must remove the import of LSTM and SVM from ins_tools/EKF.py to do so.
