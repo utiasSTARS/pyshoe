@@ -19,6 +19,9 @@ Download the full inertial dataset (~2.9 GB) by running the following bash scrip
 ```
 bash download_data.sh
 ```
+
+Alternatively, the dataset can be downloaded through [IEEE dataport](https://ieee-dataport.org/open-access/university-toronto-foot-mounted-inertial-navigation-dataset), which is accessible without any membership.
+
 We currently provide three separate inertial datasets in the full package:
 
 * VICON Dataset: Stored in `data/vicon`. Collected within a ~3x3m motion capture area. There are 56 trials in total, and all of the raw data has been processed into a .mat file in `data/vicon/processed`. This dataset has complete position ground truth. 
